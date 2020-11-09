@@ -142,69 +142,75 @@ INSERT INTO Artiste VALUES (121, 'Barr', 'Jean-Marc', 1960);
 #
 
 DROP TABLE IF EXISTS Film;
-CREATE TABLE Film (
-  idfilm int(11) NOT NULL PRIMARY KEY auto_increment,
-  titre varchar(50) NOT NULL default '',
-  annee int(11) NOT NULL default '0',
-  idGenre int(11) NOT NULL default '1' references Genre(id),
-  resume text,
-  photo varchar(50) NOT NULL default ''
-   
+
+CREATE TABLE `Film` (
+  `idfilm` int(11) PRIMARY KEY  auto_increment,
+  `titre` varchar(100) NOT NULL default '',
+   annee int(11) NOT NULL default 0,
+  `prenom_realisateur` varchar(50) NOT NULL default '',
+  `nom_realisateur` varchar(50) NOT NULL default '',
+  `genre` int(11) NOT NULL default '1' references Genre(id),
+  `sortie` date NOT NULL default '2000-12-12',
+  `recettes` int(20) NOT NULL default 0
 ) ;
 
-#
-# Dumping data for table `Film`
-#
 
-INSERT INTO Film VALUES (1,'Vertigo', 1958, 2, 'Scottie Ferguson, ancien inspecteur de police, est sujet au vertige depuis qu\'il a vu mourir son\r\n collègue. Elster, son ami, le charge de surveiller sa femme, Madeleine, ayant des tendances\r\n suicidaires. Amoureux de la jeune femme Scottie ne remarque pas le piège qui se trame autour\r\n de lui et dont il va être la victime... ','vertigo.gif');
-INSERT INTO Film VALUES (2,'Titanic', 1997, 6, 'Conduite par Brock Lovett, une expédition américaine fouillant l\'épave du Titanic remonte à la\r\n surface le croquis d\'une femme nue. Alertée par les médias la dame en question, Rose DeWitt\r\n Bukater, aujourd\'hui centenaire, rejoint les lieux du naufrage, d\'où elle entreprend de conter le\r\n récit de son fascinant, étrange et tragique voyage... ','titanic.jpg');
-INSERT INTO Film VALUES (3,'1492',1996,1,'Evocation de la vie de l\'homme qui decouvrit le continent americain','1492.jpg');
-INSERT INTO Film VALUES (4,'Volte/Face', 1997, 2, 'Directeur d\'une unité anti-terroriste, Sean Archer recherche Castor Troy, un criminel responsable de la\r\n mort de son fils six ans plus tôt. Il parvient à l\'arrêter mais apprend que Troy a caché une bombe au Palais\r\n des Congrès de Los Angeles. Seul le frère de Troy peut la désamorcer et, pour l\'approcher, Archer se fait\r\n greffer le visage de Troy. ','volteface.jpg');
-INSERT INTO Film VALUES (5,'Le nom de la rose', 1986, 5, 'En l\'an 1327, dans une abbaye bénédictine, le moine franciscain Guillaume de Baskerville,\r\n accompagné de son jeune novice Adso, enquête sur de mystérieuses morts qui frappent la\r\n confrérie. Le secret semble résider dans la bibliothèque, où le vieux Jorge garde jalousement un\r\n livre jugé maudit. ','nomrose.jpg');
-INSERT INTO Film VALUES (6,'Sleepy Hollow', 1999, 2, 'Nouvelle Angleterre, 1799. A Sleepy Hollow, plusieurs cadavres sont retrouvés décapités. La\r\n                                      rumeur attribue ces meurtres à un cavalier lui-même sans tête. Mais le fin limier\r\n                                      new-yorkais Ichabod Crane ne croit pas en ses aberrations. Tombé sous le charme de la\r\n                                      vénéneuse Katrina, il mène son enquête au coeur des sortilèges de Sleepy Hollow.. ','sleepy.jpg');
-INSERT INTO Film VALUES (7,'American Beauty', 1999, 6, 'Lester Burnham, sa femme Carolyn et leur fille Jane mènent apparemment une vie des plus\r\n heureuses dans leur belle banlieue. Mais derrière cette respectable façade se tisse une étrange\r\n et grinçante tragi-comédie familiale où désirs inavoués, frustrations et violences refoulées\r\n conduiront inexorablement un homme vers la mort. ','American_Beauty.jpg');
-INSERT INTO Film VALUES (8,'Impitoyable', 1992, 1, 'Légendaire hors-la-loi, William Munny s\'est reconverti depuis onze ans en paisible fermier. Il\r\n reprend néanmoins les armes pour traquer deux tueurs en compagnie de son vieil ami Ned\r\n Logan. Mais ce dernier est capturé, puis éxécute. L\'honneur et l\'amitié imposent dès lors à\r\n Munny de redevenir une dernière fois le héros qu\'il fut jadis... ','impitoyable.jpg');
-INSERT INTO Film VALUES (9,'Gladiator', 2000, 1, 'Le général romain Maximus est le plus fidèle\r\n                    soutien de l\'empereur Marc Aurèle, qu\'il a\r\n                    conduit de victoire en victoire avec une\r\n                    bravoure et un dévouement exemplaires.\r\n                    Jaloux du prestige de Maximus, et plus\r\n                    encore de l\'amour que lui voue l\'empereur,\r\n                    le fils de Marc-Aurèle, Commode, s\'arroge\r\n                    brutalement le pouvoir, puis ordonne\r\n                    l\'arrestation du général et son exécution.\r\n                    Maximus échappe à ses assassins mais ne peut\r\n                    empêcher le massacre de sa famille. Capturé\r\n                    par un marchand d\'esclaves, il devient\r\n                    gladiateur et prépare sa vengeance.','gladiator.jpg');
-INSERT INTO Film VALUES (10,'Blade Runner', 1982, 1, 'En 2019, lors de la décadence de Los Angeles, des êtres synthétiques, sans pensée, sans\r\n émotions, suffisent aux différents travaux d\'entretien. Leur durée de vie n\'excède pas 4 années.\r\n Un jour, ces ombres humaines se révoltent et on charge les tueurs, appelés Blade Runner, de\r\n les abattre... ','blade.jpg');
-INSERT INTO Film VALUES (11,'Piège de cristal', 1988, 2, 'John Mc Clane, policier new-yorkais, vient passer Noel a Los Angeles aupres de sa femme.\r\n Dans le building ou elle travaille, il se retrouve temoin de la prise en otage de tout le personnel\r\n par 12 terroristes. Objectif de ces derniers, vider les coffres de la societe. Cache mais isole, il\r\n entreprend de prevenir l\'exterieur...','piege.jpg');
-INSERT INTO Film VALUES (12,'58 minutes pour vivre', 1990, 2, '\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n Venu attendre sa femme a l\'aéroport, le policier John McLane remarque la présence de\r\n terroristes qui ont pris le contrôle des pistes, empêchant tout avion d\'atterrir et menaçant de\r\n laisser les appareils en vol tourner jusqu\'à épuisement de leur kérosène. John n\'a devant lui que\r\n 58 minutes pour éviter la catastrophe... ','58.jpg');
-INSERT INTO Film VALUES (13,'Van Gogh', 1990, 1, 'Les derniers jours de la vie de Vincent Van Gogh, réfugié à Auvers-sur-Oise, près de chez son\r\n ami et protecteur le docteur Gachet, un ami de son frère Théo. Ce peintre maudit, que les\r\n villageois surnommaient "le fou", n\'avait alors plus que deux mois à vivre, qu\'il passa en\r\n peignant un tableau par jour. ','van.jpg');
-INSERT INTO Film VALUES (14,'Seven', 1995, 2, 'A New York, un criminel anonyme a décidé de commettre 7 meurtres basés sur les 7 pêchés\r\n capitaux énoncés dans la Bible : gourmandise, avarice, paresse, orgueil, luxure, envie et colère.\r\n Vieux flic blasé à 7 jours de la retraite, l\'inspecteur Somerset mène l\'enquête tout en formant\r\n son remplaçant, l\'ambitieux inspecteur David Mills... ','seven.jpg');
-INSERT INTO Film VALUES (15,'L\'armée des douze singes', 1995, 8, 'En 2035, un prisonnier du nom de James Cole est engagé contre son gré comme cobaye dans une expérience ayant pour but de l\'envoyer dans le passé','singes.jpg');
-INSERT INTO Film VALUES (16,'Pulp fiction', 1994, 2, 'Pulp Fiction décrit l\'odyssée sanglante et burlesque de petits malfrats dans la jungle de\r\n Hollywood, ou s\'entrecroisent les destins de deux petits tueurs, d\'un dangereux gangster marié\r\n à une camée, d\'un boxeur roublard, de prêteurs sur gages sadiques, d\'un caïd élégant et\r\n dévoué, d\'un dealer bon mari et de deux tourtereaux à la gachette facile... ','pulp.jpg');
-INSERT INTO Film VALUES (17,'Mary à tout prix', 1998, 5, 'Pour retrouver l\'amour de sa jeunesse, la belle Mary, Ted-le-looser engage Pat Healy, un\r\n privé. Subjugé par la jeune femme, ce dernier tente de la séduire en se faisant passer pour un\r\n architecte. Il cache la vérité à Ted et fait cause commune avec Tucker, un autre prétendant,\r\n pour se débarrasser de l\'encombrant Ted... ','mary.jpg');
-INSERT INTO Film VALUES (18,'Terminator', 1984, 4, 'Deux creatures venues du futur debarquent sur terre. L\'une d\'entre elles, le Terminator, doit\r\n eliminer une certaine Sarah Connor, qui doit enfanter celui qui sera le chef d\'un groupe de\r\n resistants. L\'autre, Kyle Reese, est charge par les rebelles de defendre Sarah... ','terminator.jpg');
-INSERT INTO Film VALUES (19,'Les dents de la mer', 1975, 4, 'Dans la station balnéaire d\'Amityville, un requin géant frappe à plusieurs reprises. Soucieux\r\n d\'une bonne saison touristique, le maire interdit au sherif Brody de fermer les plages. Une prime\r\n est offerte et le célèbre chasseur de requin Quint se lance avec Brody et l\'ichtyologue Hooper à\r\n la poursuite du monstre... ','dent.jpg');
-INSERT INTO Film VALUES (20,'Le prince d\'Egypte', 1998, 3, 'A travers l\'histoire de deux frères, tous deux princes du plus grand empire sur terre, évocation de l\'épopée de Moïse','prince.jpg');
-INSERT INTO Film VALUES (21,'Godzilla', 1998, 4, 'Issu des radiations atomiques engendrées par les essais nucléaires en Polynésie, un monstre\r\n gigantesque, aussi haut qu\'un building, se dirige vers New York, semant le chaos sur son\r\n passage. Pour tenter de stopper cette créature destructrice, l\'armée s\'associe à une équipe de\r\n scientifiques américains et à un énigmatique enquêteur français... ','godzilla.jpg');
-INSERT INTO Film VALUES (22,'Matrix', 1999, 4, 'Dans un monde où tout ce qui semble réel est en fait élaboré par l\'univers électronique baptisé\r\n la Matrice, Néo, un programmeur, est contacté par un certain Morpheus. D\'après lui, Néo\r\n serait le Libérateur tant attendu, le seul capable de mettre en échec l\'omnipotence de la\r\n Matrice et rendre ses droits à la réalité... ','matrix.jpg');
-INSERT INTO Film VALUES (23,'Mission: Impossible', 1996, 4, 'Chargé d\'une nouvelle mission, l\'agent du contre espionnage Ethan Hunt tombe avec son\r\n équipe dans un piège sanglant. Seul survivant avec Claire, la jeune épouse de son regretté chef\r\n Jim Phelps, Ethan se retrouve accusé de trahison. En fuite, il prépare sa contre-attaque,\r\n recrutant l\'homme de main Krieger et le pirate informatique Luther... ','mission.jpg');
-INSERT INTO Film VALUES (24,'Kagemusha', 1980, 1, 'Au XVIe siecle, Takeda, grand seigneur trouble par les guerres civiles de son pays, fait appel a\r\n un Kagemusha pour l\'aider dans ses batailles. Takeda est blesse et avant de mourir, il exige que\r\n sa mort soit tenue secrete pendant trois ans afin d\'eviter un eclatement du clan. Le Kagemusha\r\n devra le remplacer... ','kage.jpg');
-INSERT INTO Film VALUES (25,'Les pleins pouvoirs', 1997, 2, 'Luther Whitney est l\'as des cambrioleurs. Occupé à vider le coffre de l\'influent Walter Sullivan,\r\n il est témoin d\'un meurtre sadique impliquant le Président des Etats-Unis et les services\r\n secrets. Soupçonné par la police d\'en être l\'auteur, il se retrouve également traqué par les\r\n tueurs, qui ont compris qu\'ils ont été observés.','pouvoir.jpg');
-INSERT INTO Film VALUES (26,'Le gendarme et les extra-terrestres', 1978, 5, 'En anglais: Gendarme and the Creatures from Outer Space !\r\n','gendarme.jpg');
-INSERT INTO Film VALUES (27,'Les frères pétards', 1986, 5, 'Fauchés, Momo et Manu acceptent de convoyer des statuettes depuis Amsterdam, et découvrent qu\'elles contiennent de la drogue','frere.jpg');
-INSERT INTO Film VALUES (28,'Le monde perdu', 1997, 4, 'Quatre ans après le terrible fiasco de son Jurassic Park, le milliardaire John Hammond rappelle le Dr Ian Malcolm pour l\'informer de son nouveau projet','monde.jpg');
-INSERT INTO Film VALUES (29,'Rain Man', 1988, 6, 'A la mort de son père, Charlie se voit déposséder de son héritage par un frère dont il ignorait\r\n l\'existence, Raymond. Celui-ci est autiste et vit dans un hôpital psychiatrique. Charlie enlève\r\n Raymond afin de prouver qu\'il est capable de s\'en occuper et de toucher l\'héritage. ','rain.jpg');
-INSERT INTO Film VALUES (30,'Top Gun', 1986, 1, '\r\n Pilote de chasse émérite mais casse-cou Maverick Mitchell est admis à Top Gun, l\'école de\r\n l\'élite de l\'aéronavale. Son manque de prudence lui attire les foudres de ses supérieurs et la\r\n haine de certains coéquipiers. Il perd subitement la foi et confiance en lui quand son ami de\r\n toujours meurt en vol et qu\'il s\'en croit responsable... ','top.jpg');
-INSERT INTO Film VALUES (31,'Les bronzés font du ski', 1979, 5, 'Apres avoir passe des vacances d\'ete ensemble, Bernard, Nathalie, Gigi, Jerome, Popeye,\r\n Jean-Claude et Christiane se retrouvent aux sports d\'hiver. Tous ont leurs problemes de coeur\r\n ou d\'argent, mais il faut bien vivre avec. Avant de se separer, se perdre dans la montagne leur\r\n permet de gouter aux joies de la "vraie vie" paysanne... ','bronzes.jpg');
-INSERT INTO Film VALUES (32,'MICROCOSMOS', 1996, 3, ' \r\n\r\nUne heure quinze sur une planète inconnue : la Terre, redécouverte à l\'echelle du centimètre. Ses habitants,\r\n des créatures fantastiques : les insectes et autres animaux de l\'herbe et de l\'eau. Ses paysages : les forêts\r\n impenétrables que sont les touffes d\'herbe, ou des gouttes de rosée grosses comme des ballons... ','micro.jpg');
-INSERT INTO Film VALUES (33,'Psychose', 1960, 6, 'Après avoir volé 40 000 dollars, Marion Crane se rend dans un motel tenu par Norman Bates. Elle est\r\n poignardée sous sa douche par une femme. Norman fait disparaitre le corps et les affaires de la jeune\r\n femme. Mais Sam, le fiancé de Marion, inquiet de ne pas avoir de nouvelles, engage un détective pour la\r\n retrouver... ','psy.jpg');
-INSERT INTO Film VALUES (34,'Le retour du Jedi', 1983, 4, 'Luke Skywalker s\'introduit chez Jabba pour delivrer Han Solo et la princesse Leia, tandis que l\'Empire\r\n reconstruit une deuxieme "Etoile de la Mort". Luke se rend ensuite au chevet de Yoda qui est mourant. Il lui\r\n apprend que Leia est sa soeur. Luke forme un commando pour attaquer l\'Etoile, tandis qu\'il affronte son\r\n pere, Darth Vador... ','retour.jpg');
-INSERT INTO Film VALUES (35,'Les oiseaux', 1963, 1, 'Melanie Daniels se rend à Bodega Bay pour offrir deux perruches en cage à Cathy, la soeur de l\'avocat\r\n Mitch Brenner. Attaquée par une mouette, Melanie reste chez les Brenner pour la nuit. Mais d\'autres\r\n évènements étranges se produisent: des enfants sont blessés par des corbeaux et la maison de Mitch est\r\n envahie par des milliers d\'oiseaux. ','oiseau.jpg');
-INSERT INTO Film VALUES (36,'Reservoir dogs', 1992, 2, '\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n Voleurs de profession, Joe Cabot et son fils Eddie engagent un groupe de six criminels pour le cambriolage\r\n d\'un diamantaire. Malgré toutes les précautions prises, la police est sur place le jour J, et l\'opération se\r\n solde par un massacre. Les survivants du gang se réunissent pour règler leurs comptes, chacun\r\n soupçonnant l\'autre d\'avoir trahi. ','dog.jpg');
-INSERT INTO Film VALUES (37,'Eyes Wide Shut', 1999, 6, 'Un couple de bourgeois, cédant à la jalousie et à l\'obsession sexuelle, entreprend un voyage psychologique\r\n à la recherche de son identité. Le mari, au bout de son périple nocturne, revenu de ses désirs, ne trouvera\r\n finalement auprès de son épouse qu\'un compromis banal mais complice, les yeux ouverts à tout jamais sur\r\n un rêve impossible. ','eyes.jpg');
-INSERT INTO Film VALUES (38,'Shining', 1980, 6, 'Jack Torrance s\'installe avec sa femme et son fils Danny dans un hôtel fermé à la morte saison afin d\'écrire\r\n un roman. Il apprend que le gardien précédent a tué sa femme et ses deux filles avant de se suicider. Très\r\n vite, Jack va s\'apercevoir que des choses étranges se passent autour de lui et que son fils a des pouvoirs\r\n extrasensoriels... ','shining.jpg');
-INSERT INTO Film VALUES (39,'Pas de printemps pour Marnie', 1964, 5, 'Marnie est engagée comme secrétaire chez un editeur, Mark Rutland. Celui-ci amoureux d\'elle, découvre\r\n qu\'elle est kleptomane et l\'oblige à l\'épouser en la menaçant de la dénoncer. En s\'apercevant que Marnie a\r\n la phobie de la cou leur rouge, Mark tente de remonter dans le passé de la jeune femme afin de comprendre\r\n les raisons de sa névrose. ','marnie.jpg');
-INSERT INTO Film VALUES (40,'Fenêtre sur cour', 1954, 1, 'En repos forcé à cause d\'une jambe plâtrée, le reporter L.B. Jefferies observe au téléobjectif les voisins de\r\n l\'immeuble d\'en face. C\'est ainsi qu\'il remarque le curieux manège d\'un représentant de commerce, M.\r\n Thorwald, qu\'il soupconne très vite d\'avoir assassiné sa femme... ','fenetre.jpg');
-INSERT INTO Film VALUES (41,'La mort aux trousses', 1959, 2, 'Roger Thornhill, publiciste, est pris dans le hall de son hôtel pour un certain Kaplan, un espion. Deux\r\n hommes tentent de le tuer et quand il retrouve l\'un de ses agresseurs, celui-ci est assassiné devant ses\r\n yeux. Pris pour un meurtrier, il est obligé de fuir vers Chicago... ','mort.jpg');
-INSERT INTO Film VALUES (42,'Jeanne d\'Arc', 1999, 1, 'L\'épopee de Jeanne qui assista, petite fille, au pillage de son village Domremy par l\'armée anglaise','jeanne.jpg');
-INSERT INTO Film VALUES (43,'Le cinquième élément', 1997, 4, 'Au XXIIIème siècle, dans un univers étrange et coloré, où tout espoir de survie est impossible sans la\r\n découverte du Cinquième Elément, un héros peu ordinaire affronte le mal pour sauver l\'humanité. ','5.jpg');
-INSERT INTO Film VALUES (44,'Léon', 1994, 2, '"Léon est un tueur. Un de la pire espèce. Il est introuvable, indétectable, pire qu\'un sous-marin. Son ombre\r\n est comme une menace de danger permanent sur New York. Indestructible Léon ? Oui, jusqu\'à ce qu\'une\r\n petite souris pénètre son univers. Une toute petite souris aux yeux immenses..." ','leon.jpg');
-INSERT INTO Film VALUES (45,'Nikita', 1990, 2, 'Nikita, droguée et violente, est prise en mains par des psychiatres qui la rééduquent, la conditionnent, afin\r\n d\'en faire une tueuse à la botte des Services Secrets. Plus tard, réalisant ce qu\'elle est devenue, un pion\r\n sans vie privée que l\'on manipule, elle tente d\'échapper à ses commanditaires. ','nikita.jpg');
-INSERT INTO Film VALUES (46,'Le grand bleu', 1988, 1, 'Jacques Mayol et Enzo Molinari se connaissent depuis l\'enfance. Tous deux experts en apnée, s\'affrontent\r\n continuellement pour obtenir le record du monde de plongée. Toujours en rivalité, les deux hommes\r\n descendent de plus en plus profond, au risque de leurs vies. Le film est ressorti en janvier 89 en version\r\n longue d\'une durée de 2h40. ','bleu.jpg');
-INSERT INTO Film VALUES (47,'Alien', 1979, 4, 'Près d\'un vaisseau spatial échoué sur une lointaine planète, des Terriens en mission découvrent\r\n de bien étranges "oeufs". Ils en ramènent un à bord, ignorant qu\'ils viennent d\'introduire parmi\r\n eux un huitième passager particulièrement féroce et meurtrier. ','alien.jpg');
-INSERT INTO Film VALUES (48,'Le silence des agneaux', 1990, 6, 'Afin de retrouver la piste d\'un tueur surnommé Buffalo Bill car il scalpe les femmes qu\'il\r\n assassine, la jeune stagiaire du FBI Clarice Starling est dépêchée auprès d\'Hannibal Lecter,\r\n prisonnier pour avoir dévoré ses victimes. La coopération de ce dernier devrait permettre à\r\n Clarice de saisir et d\'anticiper le comportement de Buffalo... ','silence.jpg');
-# --------------------------------------------------------
+--
+--  data for table `Film`
+--
+
+
+INSERT INTO `Film` VALUES (1,'Twilight chapitre II : Tentation',2008,'Chris','Weitz',4,'2009-2-12',710),
+(2,'Transformers',2007,'Michael','Bay',4,'2007-6-6',709),
+(3,'Twilight chapitre III : Hésitation',2010,'David','Slade',4,'2010-1-10',698),
+(4,'Forrest Gump',1994,'Robert','Zemeckis',1,'1994-5-20',677),
+(5,'Avatar',2009,'James','Cameron',4,'2009-2-15',2782),
+(6,'Titanic',1197,'James','Cameron',6,'1997-7-23',1843),
+(7,'Harry Potter et les Reliques de la Mort II',2002,'David','Yates',4,'2011-12-1',1294),
+(8,'Le Seigneur des anneaux : Le Retour du roi',2003,'Peter','Jackson',1,'2003-5-23',1119),
+(9,'Sixième Sens',1999,'Night','Shyamalan',7,'1999-3-6',673),
+(10,'L\'age de glace 2',2006,'Carlos','Saldanha',3,'2006-9-6',655),
+(11,'Pirates des Caraibes : La Malédictiondiction du Black Pearl',2003,'Gore','Verbinski',4,'2003-4-2',654),
+(12,'Transformers 3 : La Face cachée de la Lune',2011,'Michael','Bay',4,'2011-4-23',1106),
+(13,'Pirates des Caraibes : Le Secret du coffre maudit',2006,'Gore','Verbinski',4,'2006-12-1',1066),
+(14,'Toy Story 3',2010,'Lee','Unkrich',3,'2010-7-10',1063),
+(15,'Pirates des Caraibes : La Fontaine de Jouvence',2011,'Rob','Marshall',4,'2011-3-9',1038),
+(16,'Alice au pays des merveilles',2010,'Tim','Burton',3,'2010-9-4',1024),
+(17,'The Dark Knight : Le Chevalier noir',2008,'Christopher','Nolan',4,'2008-8-6',1001),
+(18,'Harry Potter A l école des Sorciers',2001,'Chris','Columbus',4,'2001-2-1',975),
+(19,'Da Vinci Code',2006,'Ron','Howard',2,'2006-8-2',758),
+(20,'Shrek 4 : Il était une fin',2010,'Mike','Mitchell',3,'2010-1-5',753),
+(21,'Le Monde de Narnia',2005,'Andrew','Adamson',4,'2005-7-4',745),
+(22,'Matrix Reloaded',1999,'Andy','Wachowski',7,'2003-9-21',742),
+(23,'La -haut',2009,'Bob','Peterson',3,'2009-11-7',731),
+(24,'Pirates des Caraibes : Jusqu au bout du monde',2007,'Gore','Verbinski',4,'2007-10-23',963),
+(25,'Harry Potter et les Reliques de la Mort I',2010,'David','Yates',4,'2010-4-3',955),
+(26,'Harry Potter et l Ordre du PhÃ©nix',2007,'David','Yates',4,'2007-2-1',940),
+(27,'Harry Potter et le Prince de Sang-Mélé',2009,'David','Yates',4,'2009-9-4',934),
+(28,'Le Seigneur des anneaux : Les Deux Tours',2002,'Peter','Jackson',1,'2002-7-12',925),
+(29,'Star Wars I : La Menace fantôme',1999,'George','Lucas',7,'1999-6-21',924),
+(30,'Shrek 2',2004,'Andrew','Adamson',3,'2004-5-26',920),
+(31,'Independence Day',1996,'Roland','Emmerich',7,'1996-1-2',817),
+(32,'Shrek le troisième',2007,'Chris','Miller',3,'2007-8-3',798),
+(33,'Harry Potter et le Prisonnier d Azkaban',2004,'Alfonso','CuarÃ³n',4,'2003-4-18',796),
+(34,'E.T. l extra-terrestre',1982,'Steven','Spielberg',7,'1982-4-4',792),
+(35,'Indiana Jones',1981,'Steven','Spielberg',8,'2008-2-2',786),
+(36,'Le Roi lion',1994,'Roger','Allers',3,'1994-6-6',784),
+(37,'Spider-Man 2',2004,'Sam','Raimi',4,'2004-11-23',783),
+(38,'Star Wars  IV : Un nouvel espoir',1977,'George','Lucas',7,'1977-9-17',775),
+(39,'2012',2009,'Roland','Emmerich',7,'2009-4-3',769),
+(40,'L age de glace 3',2009,'Carlos','Saldanha',3,'2009-9-1',886),
+(41,'Harry Potter et la Chambre des Secrets',2002,'Chris','Columbus',4,'2002-3-26',878),
+(42,'Le Seigneur des anneaux : La Communauté de l anneau',2001,'Peter','Jackson',1,'2001-7-3',870),
+(43,'Le Monde de Nemo',2003,'Andrew','Stanton',3,'2003-5-1',867),
+(44,'Star Wars III : La Revanche des Sith',2005,'George','Lucas',7,'2005-11-4',848),
+(45,'Transformers 2 : La Revanche',2009,'Michael','Bay',4,'2009-8-2',836),
+(46,'Inception',2010,'Christopher','Nolan',4,'2010-9-4',825),
+(47,'Spider-Man',2002,'Sam','Raimi',4,'2002-6-6',821),
+(48,'Jurassic Park',1993,'Steven','Spielberg',4,'1993-8-12',914),
+(49,'Harry Potter et la Coupe de Feu',2005,'Mike','Newell',4,'2005-7-7',896),
+(50,'Spider-Man 3',2007,'Sam','Raimi',4,'2007-9-1',890);
+
 
 #
 # Table structure for table `Genre`
@@ -227,6 +233,8 @@ INSERT INTO Genre VALUES (3, 'Animation');
 INSERT INTO Genre VALUES (4, 'Fantastique');
 INSERT INTO Genre VALUES (5, 'Comedie');
 INSERT INTO Genre VALUES (6, 'Drame');
+INSERT INTO Genre VALUES (7, 'Science fiction');
+INSERT INTO Genre VALUES (8, 'Aventure');
 
 # --------------------------------------------------------
 
